@@ -1,5 +1,7 @@
 from tkinter import Tk, BOTH, Canvas
 
+from Line import Line
+
 class Window:
     def __init__(self, width, height):
         self.root = Tk()
@@ -24,3 +26,6 @@ class Window:
     def close(self):
         self.running = False
         self.root.destroy()
+
+    def draw_line(self, line: Line, fill_color):
+        line.draw(self.canvas, fill_color)

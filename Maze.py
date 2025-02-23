@@ -3,7 +3,7 @@ import time
 from Cell import Cell
 
 class Maze:
-    def __init__(self, x1, y1, num_rows, num_cols, cell_size_x, cell_size_y, win):
+    def __init__(self, x1, y1, num_rows, num_cols, cell_size_x, cell_size_y, win=None):
         self._x1 = x1
         self._y1 = y1
         self._num_rows = num_rows
@@ -16,8 +16,7 @@ class Maze:
         self._create_cells()
 
     def _create_cells(self):
-        print(f"Creating cells {self._num_rows}x{self._num_cols}")
-        self.cells = [] ## Reset to new list
+        self.cells = []  ## Reset to new list
 
         for i in range(self._num_cols):
             col_cells = []
@@ -26,16 +25,15 @@ class Maze:
 
             self._cells.append(col_cells)
 
+        if self._win is None:
+            return
+
         for i in range(self._num_cols):
             for j in range(self._num_rows):
                 self._draw_cell(i, j)
 
-        print(self._cells)
-        print(f"Number cells: ")
-
     def _draw_cell(self, i, j):
         cell = self._cells[i][j]
-        print(f"Drawing cell {i}, {j} - {cell}")
 
         # Calculate the x/y position based on the values
         x1 = i * self._cell_size_x + self._x1

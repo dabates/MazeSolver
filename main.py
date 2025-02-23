@@ -16,6 +16,13 @@ def main():
 
     start_x = half_width - (cell_size_x * (cols / 2))
     start_y = half_height - (cell_size_y * (rows / 2))
+
+    if start_x < 0:
+        start_x = 0
+
+    if start_y < 0:
+        start_y = 0
+
     Maze(start_x, start_y, rows, cols, cell_size_x, cell_size_y, win)
 
     win.wait_for_close()

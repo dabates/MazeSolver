@@ -42,5 +42,28 @@ class MazeTestSuite(unittest.TestCase):
 
         self.assertTrue(wall_removed, "No walls were removed, the maze is still fully blocked.")
 
+    def test_reset_cells_visited(self):
+        for col in range(self.cols):
+            for row in range(self.rows):
+                # Reset all cells for tests
+                self.maze._cells[col][row].visited = False
+                self.maze._cells[col][row].has_left_wall = True
+                self.maze._cells[col][row].has_right_wall = True
+                self.maze._cells[col][row].has_top_wall = True
+                self.maze._cells[col][row].has_bottom_wall = True
+
+        self.maze._break_walls_r(0, 0)
+
+        for col in range(self.cols):
+            for row in range(self.rows):
+                self.assertTrue(self.maze._cells[col][row].visited)
+
+        # Reset
+        self.maze._reset_cells_visited()
+
+        for col in range(self.cols):
+            for row in range(self.rows):
+                self.assertFalse(self.maze._cells[col][row].visited)
+
 if __name__ == '__main__':
     unittest.main()

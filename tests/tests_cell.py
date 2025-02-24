@@ -84,5 +84,8 @@ class CellTestCases(unittest.TestCase):
 
         self.mock_win.draw_line.assert_called_with(*expected_calls)
 
+    def test_check_visited(self):
+        self.assertFalse(self.cell.visited)
+
 if __name__ == '__main__':
     unittest.main()

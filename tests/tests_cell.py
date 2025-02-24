@@ -66,7 +66,7 @@ class CellTestCases(unittest.TestCase):
         self.cell.draw_move(cell2, undo=False)
 
         expected_calls = [
-            Line(Point(5, 5), Point(15, 5)), "red"
+            Line(Point(5, 5), Point(15, 5)), "green"
         ]
 
         self.mock_win.draw_line.assert_called_with(*expected_calls)
@@ -79,7 +79,7 @@ class CellTestCases(unittest.TestCase):
         self.cell.draw_move(cell2, undo=True)
 
         expected_calls = [
-            Line(Point(5, 5), Point(15, 5)), "gray"
+            Line(Point(5, 5), Point(15, 5)), "red"
         ]
 
         self.mock_win.draw_line.assert_called_with(*expected_calls)

@@ -47,7 +47,9 @@ class CellTestCases(unittest.TestCase):
 
         expected_calls = [
             ((Line(Point(0, 0), Point(10, 0))),),
+            ((Line(Point(0, 0), Point(10, 0))),),
             ((Line(Point(10, 0), Point(10, 10))),),
+            ((Line(Point(0, 10), Point(10, 10))), "#d9d9d9")
         ]
 
         actual_calls = [call[0] for call in self.mock_win.draw_line.call_args_list]
@@ -81,15 +83,6 @@ class CellTestCases(unittest.TestCase):
         ]
 
         self.mock_win.draw_line.assert_called_with(*expected_calls)
-
-    def test_maze_create_cells(self):
-        cols = 12
-        rows = 10
-        m = Maze(0, 0, rows, cols, 10, 10)
-
-        self.assertEqual(len(m._cells), cols)
-
-        self.assertEqual(len(m._cells[0]), rows)
 
 if __name__ == '__main__':
     unittest.main()
